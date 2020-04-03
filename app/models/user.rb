@@ -1,9 +1,12 @@
 class User < ApplicationRecord
-    has_secure_password
     validates :username, presence: true, uniqueness: true
+    has_secure_password
+    
+    has_many :decks
     
     has_many :trades
-    has_many :traders, through  => :trades
+    has_many :traders, through: :trades
+
 
     # # return an array of the trades for the given user instance
     # has_many :received_trades, foreign_key: :being_asked_to_trade_id, class_name: 'Trade'

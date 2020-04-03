@@ -1,4 +1,4 @@
 class Pokecard < ApplicationRecord
-  belongs_to :Deck
-  belongs_to :Pokemon
+  belongs_to :deck
+  belongs_to :pokemon
 end

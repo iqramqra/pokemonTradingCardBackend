@@ -6,7 +6,6 @@ class PokecardsController < ApplicationController
         render json: @pokecard
     end
 
-
     private
 
     def pokecard_params

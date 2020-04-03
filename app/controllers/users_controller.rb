@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
     before_action :authorize, only: [:persist]
 
+    def show
+        @user = User.find(params[:id])
+        render json: @user
+    end
+
     def create
         @user = User.create(user_params)
         if @user.valid?
-            infoToSaveInBox = {user_id.@user.id}
+            infoToSaveInBox = {user_id: @user.id}
             wristband = encode_token(infoToSaveInBox)
             render json: {user: UserSerializer.new(@user), token: wristband}
         else
@@ -23,7 +28,7 @@ class UsersController < ApplicationController
         if @username && @user.authenticate(params[:password])
             infoToSaveInBox = {user_id: @user.id}
             wristband = encode_token(infoToSaveInBox)
-            render json: {user: UserSerializer.new(@user), token:wristband}
+            render json: {user: UserSerializer.new(@user), token: wristband}
         else
             render json: {error: "Incorrect username or password"}
         end
