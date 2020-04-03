@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :pokecards
-  resources :pokemons
+  resources :pokemons, only:[:index]
   resources :decks
   resources :users
   resources :trades
