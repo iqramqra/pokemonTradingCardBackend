@@ -4,8 +4,4 @@ class PokemonsController < ApplicationController
         @pokemons = Pokemon.all
         render json: @pokemons
     end
-
-    def destroy
-
-    end
 end
