@@ -5,9 +5,15 @@ class DecksController < ApplicationController
         @new_deck = Deck.create(user: @user)
 
         params[:pokemon_ids].each do |poke_id|
-            Pokecard.create(pokemon_id: poke_id, deck: @new_deck)
+            Pokecard.create(pokemon_id: rand(151), deck: @new_deck)
+            Pokecard.create(pokemon_id: rand(151))
+            Pokecard.create(pokemon_id: rand(151))
+            Pokecard.create(pokemon_id: rand(151))
+            Pokecard.create(pokemon_id: rand(151))
         end
         render json: @new_deck
     end
+
+    # A user gets a set of 5 pokemons once they register. (HOW DO I MAKE THIS DRY?)
 
 end

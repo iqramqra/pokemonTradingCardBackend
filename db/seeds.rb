@@ -1879,9 +1879,9 @@ Pokemon.create(pokemons)
 
 iqra_deck = Deck.create(user: iqra)
 
-iqra_deck.pokemons << Pokemon.third
-iqra_deck.pokemons << Pokemon.fourth
-iqra_deck.pokemons << Pokemon.fifth
+iqra_deck.pokemons << Pokemon.all.sample
+iqra_deck.pokemons << Pokemon.all.sample
+iqra_deck.pokemons << Pokemon.all.sample
 
 sam_deck = Deck.create(user: sam)
 
