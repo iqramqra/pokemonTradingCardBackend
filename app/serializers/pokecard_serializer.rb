@@ -1,4 +1,4 @@
 class PokecardSerializer < ActiveModel::Serializer
   attributes :id
-  belongs_to :burger
+  belongs_to :pokemon
 end
