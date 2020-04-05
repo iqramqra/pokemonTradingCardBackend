@@ -6,10 +6,6 @@ class DecksController < ApplicationController
 
         params[:pokemon_ids].each do |poke_id|
             Pokecard.create(pokemon_id: rand(151), deck: @new_deck)
-            Pokecard.create(pokemon_id: rand(151))
-            Pokecard.create(pokemon_id: rand(151))
-            Pokecard.create(pokemon_id: rand(151))
-            Pokecard.create(pokemon_id: rand(151))
         end
         render json: @new_deck
     end

@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
-    before_action :authorize, only: [:persist]
 
-    # def show
-    #     @user = User.find(params[:id])
-    #     render json: @user
-    # end
+    before_action :authorized, only: [:persist]
 
     def index
         @users = User.all
@@ -14,34 +10,34 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.valid?
-            userInfo = {user_id: @user.id}
-            userToken = encode_token(userInfo)
-            render json: {user: UserSerializer.new(@user), token: userToken}
+            info = {user_id: @user.id}
+            token = encode_token(info)
+            render json: {user: UserSerializer.new(@user), token: token}
         else
-            render json: {error: @user.errors.full_message}
+            render json: {error: @user.errors.full_messages}
         end
     end
 
     def persist
-        userInfo = {user_id: @user.id}
-        userToken = encode_token(userInfo)
-        render json: {user: UserSerializer.new(@user), token: userToken}
+        info = {user_id: @user.id}
+        token = encode_token(info)
+        render json: {user: UserSerializer.new(@user), token: token}
     end
 
     def login
         @user = User.find_by(username: params[:username])
-        if @username && @user.authenticate(params[:password])
-            userInfo = {user_id: @user.id}
-            userToken = encode_token(userInfo)
-            render json: {user: UserSerializer.new(@user), token: userToken}
+        if @user && @user.authenticate(params[:password])
+            info = {user_id: @user.id}
+            token = encode_token(info)
+            render json: {user: UserSerializer.new(@user), token: token}
         else
             render json: {error: "Incorrect username or password"}
         end
     end
 
-    private user_params
+    private
 
-    params.permit(:username, :password, :bio, :avatar)
-
-
+    def user_params
+        params.permit(:username, :password, :bio, :avatar)
+    end
 end
