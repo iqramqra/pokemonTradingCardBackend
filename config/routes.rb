@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post '/login', to: 'users#login'
   get '/persist', to: 'users#persist'
-  # resources :pokecards
+  resources :pokecards
   # resources :trades
 
 end

@@ -1,4 +1,4 @@
 class DeckSerializer < ActiveModel::Serializer
-  attributes :id, :deckName
+  attributes :user_id
   has_many :pokecards
 end

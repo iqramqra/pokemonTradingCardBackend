@@ -1,4 +1,4 @@
 class PokecardSerializer < ActiveModel::Serializer
-  attributes :id
+  # attributes :deck_id
   belongs_to :pokemon
 end

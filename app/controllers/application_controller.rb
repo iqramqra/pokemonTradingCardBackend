@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
         if auth_header
             token = auth_header.split(' ')[1]
             begin
-                JWT.decode(token, 'fake instagram', true, algorithm: 'HS256')
+                JWT.decode(token, 'gotta catch em all', true, algorithm: 'HS256')
             rescue JWT::DecodeError
                 nil
             end
