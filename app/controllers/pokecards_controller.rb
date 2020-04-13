@@ -5,6 +5,12 @@ class PokecardsController < ApplicationController
         render json: @pokecards
     end
 
+    def create
+        # @deck_id = Deck.find_by(:deck_id)
+        @new_pokecard = Pokecard.create(pokecard_params) 
+        render json: @new_pokecard 
+    end
+
     def update
         @pokecard = Pokecard.find(params[:id])
         @pokecard.update(pokecard_params)
@@ -14,6 +20,6 @@ class PokecardsController < ApplicationController
     private
 
     def pokecard_params
-        params.require(:pokecard).permit(:deck_id)
+        params.permit(:deck_id, :pokemon_id)
     end
 end

@@ -18,6 +18,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def addCards
+        @user = Deck.find_by(user_id: @user.id)
+    end
+
     def persist
         info = {user_id: @user.id}
         token = encode_token(info)
@@ -33,6 +37,13 @@ class UsersController < ApplicationController
         else
             render json: {error: "Incorrect username or password"}
         end
+    end
+
+    def destroy
+        @user = User.find_by(params[:id])
+        @user.destroy
+        @users = User.all
+        render json: @users
     end
 
     private
