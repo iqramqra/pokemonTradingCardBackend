@@ -2,7 +2,7 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     has_secure_password
     
-    has_many :decks
+    has_one :deck
     
     has_many :trades
     has_many :traders, through: :trades
