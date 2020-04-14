@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
     before_action :authorized, only: [:persist]
 
     def index
@@ -10,7 +9,8 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         @user_deck = Deck.create(user: User.last)
-        
+        5.times{@user_deck.pokemons << Pokemon.all.sample}
+
         if @user.valid?
             info = {user_id: @user.id}
             token = encode_token(info)
@@ -19,11 +19,6 @@ class UsersController < ApplicationController
             render json: {error: @user.errors.full_messages}
         end
         # byebug
-    end
-
-    def update
-        # @user_deck = User.last
-        @user_deck.pokemons << Pokemon.all.sample
     end
 
     def persist
