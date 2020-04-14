@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create(user_params)
+        @user_deck = Deck.create(user: User.last)
+        
         if @user.valid?
             info = {user_id: @user.id}
             token = encode_token(info)
@@ -16,10 +18,12 @@ class UsersController < ApplicationController
         else
             render json: {error: @user.errors.full_messages}
         end
+        # byebug
     end
 
-    def addCards
-        @user = Deck.find_by(user_id: @user.id)
+    def update
+        # @user_deck = User.last
+        @user_deck.pokemons << Pokemon.all.sample
     end
 
     def persist

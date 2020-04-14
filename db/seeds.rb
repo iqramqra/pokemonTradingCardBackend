@@ -1,7 +1,3 @@
-iqra = User.create(username: 'Iqra', password:'asdf', bio:'chocolate and coffee', avatar:'https://www.aimeemars.com/wp-content/uploads/2020/03/IMG_9559.jpg')
-sam = User.create(username: 'Sam', password:'asdf', bio:'Fruits and Pasta is life', avatar:'https://www.dinneratthezoo.com/wp-content/uploads/2019/06/pasta-pomodoro-1.jpg')
-jin = User.create(username: 'Jin', password:'asdf', bio:'being lazy is the key', avatar:'https://i.imgflip.com/omeum.jpg')
-
 pokemons = [
     {
     "name": "Bulbasaur",
@@ -1877,11 +1873,15 @@ pokemons = [
 
 Pokemon.create(pokemons)
 
+iqra = User.create(username: 'Iqra', password:'asdf', bio:'chocolate and coffee', avatar:'https://www.aimeemars.com/wp-content/uploads/2020/03/IMG_9559.jpg')
+
 iqra_deck = Deck.create(user: iqra)
 
 iqra_deck.pokemons << Pokemon.all.sample
 iqra_deck.pokemons << Pokemon.all.sample
 iqra_deck.pokemons << Pokemon.all.sample
+
+sam = User.create(username: 'Sam', password:'asdf', bio:'Fruits and Pasta is life', avatar:'https://www.dinneratthezoo.com/wp-content/uploads/2019/06/pasta-pomodoro-1.jpg')
 
 sam_deck = Deck.create(user: sam)
 
@@ -1889,3 +1889,6 @@ sam_deck.pokemons << Pokemon.all.sample
 sam_deck.pokemons << Pokemon.all.sample
 sam_deck.pokemons << Pokemon.all.sample
 
+jin = User.create(username: 'Jin', password:'asdf', bio:'being lazy is the key', avatar:'https://i.imgflip.com/omeum.jpg')
+
+jin_deck = Deck.create(user: jin)
