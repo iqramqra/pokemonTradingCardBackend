@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         @user_deck = Deck.create(user: User.last)
-        5.times{@user_deck.pokemons << Pokemon.all.sample}
+        6.times{@user_deck.pokemons << Pokemon.all.sample}
 
         if @user.valid?
             info = {user_id: @user.id}
