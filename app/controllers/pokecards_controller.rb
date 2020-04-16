@@ -6,21 +6,9 @@ class PokecardsController < ApplicationController
     end
 
     def create
-        @pokecard = Pokecard.create(pokecard_params) 
+        payLoad = pokecard_params.merge({deck_id: logged_in_user.id})
+        @pokecard = Pokecard.create(payLoad) 
         render json: @pokecard 
-    end
-
-    def update
-        @pokecard = Pokecard.find(params[:id])
-        @pokecard.update(pokecard_params)
-        render json: @pokecard
-    end
-
-    def destroy
-        @pokecard = Pokecard.find(params[:id])
-        @pokecard.destory
-        @pokecards = Pokecard.all
-        render json: @pokecards
     end
     
     # private
